@@ -1,19 +1,22 @@
-name: CI
 on:
   push:
-    braches: [main]
+    branches: [main]
+
 jobs:
   tests:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-      - uses: actions/checout@v4
+        uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.13'
+
       - name: Install dependencies
         run: pip install -r requirements.txt
+
       - name: Run tests
         run: pytest -q
